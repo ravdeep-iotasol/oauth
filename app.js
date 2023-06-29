@@ -9,6 +9,7 @@ const clientId = "77ysyjuj4aeszo";
 const clientSecret = "V4QzAh5iL04EPx3U";
 
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => res.type("html").send("hi"));
 app.get("/auth/linkedin/callback", async (req, res) => {
