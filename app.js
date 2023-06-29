@@ -95,6 +95,7 @@ app.get("/auth/apple/callback", async (req, res) => {
 
 app.post("/auth/apple/callback", async (req, res) => {
   const { user } = req.body;
+  console.log(JSON.stringify(req.body));
 
   const fname = user?.name?.firstName;
   const lname = user?.name?.lastName;
