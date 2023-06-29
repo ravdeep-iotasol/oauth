@@ -95,6 +95,7 @@ app.get("/auth/apple/callback", async (req, res) => {
 
 app.post("/auth/apple/callback", async (req, res) => {
   console.log("chal ja post", JSON.stringify(req.body));
+  console.log("chal ja post query", JSON.stringify(req.query));
   return res.redirect(`exp://192.168.1.14:19000?fname=test`);
 });
 
