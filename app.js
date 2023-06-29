@@ -94,13 +94,13 @@ app.get("/auth/apple/callback", async (req, res) => {
 });
 
 app.post("/auth/apple/callback", async (req, res) => {
-  const { user } = JSON.parse(JSON.stringify(req.body));
-  console.log(JSON.stringify(user));
+  const { user } = JSON.parse(req.body);
+  console.log(user);
 
   const fname = user?.name?.firstName;
   const lname = user?.name?.lastName;
   const email = user?.email;
-
+  console.log(fname, lname, email);
   return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
 });
 
