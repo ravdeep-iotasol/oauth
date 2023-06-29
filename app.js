@@ -85,11 +85,6 @@ app.get("/auth/linkedin/callback", async (req, res) => {
   );
 });
 
-app.get("/auth/apple/callback", async (req, res) => {
-  console.log("chal ja get", JSON.stringify(req.query));
-  return res.redirect(`exp://192.168.1.14:19000?fname=test`);
-});
-
 app.post("/auth/apple/callback", async (req, res) => {
   const { user, id_token } = req.body;
 
@@ -97,6 +92,7 @@ app.post("/auth/apple/callback", async (req, res) => {
   let lname = "";
   let email = "";
 
+  // user object will only be there when it's first request for that unique user  
   if (user) {
     try {
       const parsedUser = JSON.parse(user);
@@ -108,19 +104,19 @@ app.post("/auth/apple/callback", async (req, res) => {
     } catch (err) {
       console.log(err);
 
-      return res.redirect(`exp://192.168.1.14:19000`);
+      return res.redirect(`exp://192.168.1.4:19000`);
     }
   } else {
+    // we can get only email by decdoing the token for the subsequent requests
     const parsedToken = decode(id_token);
     email = parsedToken.email;
   }
 
-  return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
+  return res.redirect(`exp://192.168.1.4:19000?fname=${fname}&lname=${lname}&email=${email}`);
 });
 
 const server = app.listen(port, () =>
   console.log(`Example app listening on port ${port}!`)
-
 );
 
 server.keepAliveTimeout = 120 * 1000;
