@@ -98,9 +98,9 @@ app.post("/auth/apple/callback", async (req, res) => {
   let email = "";
 
   if (user) {
-    fname = user.name.firstName;
-    lname = user.name.lastName;
-    email = user.email;
+    fname = user['name']['firstName'];
+    lname = user['name']['lastName'];
+    email = user['email'];
     console.log(fname, lname, email);
   }
 
