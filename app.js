@@ -75,16 +75,12 @@ app.get("/auth/linkedin/callback", async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.redirect(
-      `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(
-        profilePictureUrl
-      )}&email=${email}`
+      `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
     );
   }
 
   return res.redirect(
-    `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(
-      profilePictureUrl
-    )}&email=${email}`
+    `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
   );
 });
 
@@ -94,7 +90,7 @@ app.get("/auth/apple/callback", async (req, res) => {
 });
 
 app.post("/auth/apple/callback", async (req, res) => {
-  const { user } = JSON.parse(req.body);
+  const { user } = req.body;
   console.log(user);
 
   const fname = user?.name?.firstName;
