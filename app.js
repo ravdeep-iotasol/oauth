@@ -112,7 +112,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     email = parsedToken.email;
   }
 
-  return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
+  return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}&state=123`);
 });
 
 const server = app.listen(port, () =>
