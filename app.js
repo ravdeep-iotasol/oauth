@@ -92,18 +92,23 @@ app.get("/auth/apple/callback", async (req, res) => {
 app.post("/auth/apple/callback", async (req, res) => {
   const { user } = req.body;
 
-  const parsedUser = JSON.parse(user);
-  console.log(parsedUser, parsedUser.name);
-
   let fname = "";
   let lname = "";
   let email = "";
 
-  if (parsedUser) {
-    fname = parsedUser['name']?.['firstName'];
-    lname = parsedUser['name']?.['lastName'];
-    email = parsedUser['email'];
-    console.log(fname, lname, email);
+  if (user) {
+    try {
+      const parsedUser = JSON.parse(user);
+      if (parsedUser) {
+        fname = parsedUser['name']?.['firstName'];
+        lname = parsedUser['name']?.['lastName'];
+        email = parsedUser['email'];
+      }
+    } catch (err) {
+      console.log(err);
+
+      return res.redirect(`exp://192.168.1.14:19000`);
+    }
   }
 
   return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
