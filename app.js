@@ -76,12 +76,12 @@ app.get("/auth/linkedin/callback", async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.redirect(
-      `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
+      `exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
     );
   }
 
   return res.redirect(
-    `exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
+    `exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
   );
 });
 
@@ -104,7 +104,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     } catch (err) {
       console.log(err);
 
-      return res.redirect(`exp://192.168.1.4:19000`);
+      return res.redirect(`exp://192.168.1.14:19000`);
     }
   } else {
     // we can get only email by decdoing the token for the subsequent requests
@@ -112,7 +112,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     email = parsedToken.email;
   }
 
-  return res.redirect(`exp://192.168.1.4:19000?fname=${fname}&lname=${lname}&email=${email}`);
+  return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
 });
 
 const server = app.listen(port, () =>
