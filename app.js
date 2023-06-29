@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 const bodyParser = require("body-parser");
 const express = require("express");
-const jwt = require('jsonwebtoken');
+const { decode } = require('jsonwebtoken');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -97,7 +97,7 @@ app.post("/auth/apple/callback", async (req, res) => {
   let lname = "";
   let email = "";
 
-  const parsed = jwt.verify(id_token, '', { verify: false });
+  const parsed = decode(id_token);
   console.log(parsed)
   if (user) {
     try {
