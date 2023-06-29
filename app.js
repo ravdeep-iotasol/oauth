@@ -97,8 +97,6 @@ app.post("/auth/apple/callback", async (req, res) => {
   let lname = "";
   let email = "";
 
-  const parsed = decode(id_token);
-  console.log(parsed)
   if (user) {
     try {
       const parsedUser = JSON.parse(user);
@@ -112,6 +110,9 @@ app.post("/auth/apple/callback", async (req, res) => {
 
       return res.redirect(`exp://192.168.1.14:19000`);
     }
+  } else {
+    const parsedToken = decode(id_token);
+    email = parsedToken.email;
   }
 
   return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}`);
