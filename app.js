@@ -112,6 +112,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     email = parsedToken.email;
   }
 
+  console.log({ email, fname, lname });
   return res.redirect(`com.ravdeepiota.expoapp://?fname=${fname}&lname=${lname}&email=${email}&state=123`);
 });
 
