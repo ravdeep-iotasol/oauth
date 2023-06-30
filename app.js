@@ -76,12 +76,12 @@ app.get("/auth/linkedin/callback", async (req, res) => {
   } catch (err) {
     console.log(err);
     return res.redirect(
-      `exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
+      `com.ravdeepiota.expoapp://?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
     );
   }
 
   return res.redirect(
-    `exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
+    `com.ravdeepiota.expoapp://?fname=${fname}&lname=${lname}&photoUrl=${encodeURIComponent(profilePictureUrl)}&email=${email}`
   );
 });
 
