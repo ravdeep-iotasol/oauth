@@ -104,7 +104,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     } catch (err) {
       console.log(err);
 
-      return res.redirect(`exp://192.168.1.14:19000`);
+      return res.redirect(`com.ravdeepiota.expoapp//`);
     }
   } else {
     // we can get only email by decdoing the token for the subsequent requests
@@ -112,7 +112,7 @@ app.post("/auth/apple/callback", async (req, res) => {
     email = parsedToken.email;
   }
 
-  return res.redirect(`exp://192.168.1.14:19000?fname=${fname}&lname=${lname}&email=${email}&state=123`);
+  return res.redirect(`com.ravdeepiota.expoapp?fname=${fname}&lname=${lname}&email=${email}&state=123`);
 });
 
 const server = app.listen(port, () =>
