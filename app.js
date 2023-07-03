@@ -6,8 +6,8 @@ const { decode } = require('jsonwebtoken');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const clientId = "77ysyjuj4aeszo";
-const clientSecret = "V4QzAh5iL04EPx3U";
+const clientId = "ADD_SECRET_SAUCE_HERE";
+const clientSecret = "ADD_SECRET_SAUCE_HERE";
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
@@ -113,7 +113,7 @@ app.post("/auth/apple/callback", async (req, res) => {
   }
 
   console.log({ email, fname, lname });
-  return res.redirect(`com.ravdeepiota.expoapp://?fname=${fname}&lname=${lname}&email=${email}&state=123`);
+  return res.redirect(`exp://192.168.29.31:19000?fname=${fname}&lname=${lname}&email=${email}`);
 });
 
 const server = app.listen(port, () =>
